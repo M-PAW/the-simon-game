@@ -7,6 +7,13 @@ let userClickedPattern = [];
 let level = 0;
 let started = false
 
+// front-loading the audio files to improve performance
+const blue = new Audio("./sound/blue.mp3");
+const green = new Audio("./sounds.green.mp3");
+const red = new Audio("./sounds/red.mp3");
+const yellow = new Audio("./sounds/yellow.mp3");
+const wrong = new Audio("./sounds/wrong.mp3");
+
 /**
  *  Refactored Code below
  */
@@ -50,8 +57,38 @@ const checkAnswer = (currentLevel) => {
 
 // Play a selected audio file
 const playAudio = (name) => {
-    const audio = new Audio(`./sounds/${name}.mp3`)
-    audio.play();
+    /**
+     * Changing this audio play method,
+     * attempting to front-load as
+     * opposed to reassigning from file
+     * each time.
+     */
+    // const audio = new Audio(`./sounds/${name}.mp3`)
+    // audio.play();
+
+    /**
+     * Front-load version
+     */
+    switch (name) {
+        case "blue":
+            blue.play();
+            break;
+        case "green":
+            green.play();
+            break;
+        case "red":
+            red.play();
+            break;
+        case "yellow":
+            yellow.play();
+            break;
+        case "wrong":
+            wrong.play();
+            break;
+        default:
+            alert("An error has occured while playing audio.")
+            break;
+    }
 }
 
 // Animates the randomized pattern to the user.
