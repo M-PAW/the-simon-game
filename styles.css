@@ -66,4 +66,9 @@ body {
     background-color: blueviolet;
     color: orangered;
   }
+
+  p {
+      font-size: 1.1rem;
+      color: #FFF;
+  }
   
